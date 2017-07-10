@@ -1,0 +1,23 @@
+section#contact-info {
+	font-size: .8em;
+}
+
+.job {
+	background-color: #e9e5dc;
+	border-radius: 15%;
+	padding: 1em;
+	margin-bottom: 1em;
+}
+
+.accomplishment {
+	font-size: .8em;
+}
+
+li:first-child {
+	color: lime;
+	background-color: black;
+}
+
+body h2 {
+	font-size: 5em;
+} 
