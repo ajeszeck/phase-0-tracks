@@ -1,0 +1,38 @@
+body {
+	position: relative;
+	margin: auto;
+	padding: 1rem;
+}
+
+div {
+	position: fixed;
+	width: 500px;
+	margin-left: 25%;
+
+}
+
+.octopus {
+	position: relative;
+	display: inline-block;
+	margin: 0 auto;
+	top: 70px;
+	left: 60px;
+	z-index: 0;
+}
+
+.glasses {
+	position: absolute;
+	display: inline-block;
+	margin-left: 103px;
+	margin-top: 170px;
+	z-index: 1;
+}
+
+.hat {
+	position: absolute;
+	display: inline-block;
+	margin: auto;
+	left: 40px;
+	top: 10px;
+	z-index: 2;
+}
