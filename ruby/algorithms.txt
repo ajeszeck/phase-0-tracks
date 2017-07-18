@@ -1,0 +1,26 @@
+
+Algorithm for a robot to select the preferred floor for a human:
+(Hypothetical elevator has 9 floors + Lobby)
+
+- Prompt human for input using pre-recorded message: “What floor?”
+- When voice is recognized
+  — Use voice recognition program (in robot) to translate answer to numbers
+  — Until answer is “lobby” or any number between 2 and 10
+     - Use visual recognition of button control panel to press the given floor
+     — If answer does not match “lobby” or a number between 2 and 10
+       - Prompt “Does not compute, please repeat your floor number”
+- When no voice is heard remain deactivated
+
+Making Coffee
+
+- Open coffee maker
+  - Until the coffee maker has coffee and water
+    - If old grounds are present
+      - Empty old grounds
+    - Else if no old grounds, 
+      - Load filter then add coffee
+      - Check water level
+        - If empty
+          - Add water
+        - Else if full
+	  - Turn on
