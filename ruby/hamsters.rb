@@ -10,8 +10,10 @@ good_candidate = gets.chomp
 
 if good_candidate == "y"
 	good_candidate = true
+	good_candidate = "YES"
 else good_candidate
 	good_candidate = false
+	good_candidate = "NO"
 end
 p good_candidate
 puts "Estimated age?"
@@ -23,5 +25,8 @@ else
 	age = age.to_i
 end
 
-
-
+puts "Name: #{name}"
+puts "Volume Level: #{volume}"
+puts "Fur color: #{fur_color}"
+puts "Good candidate for adoption: #{good_candidate}"
+puts "Estimate age: #{age}"
