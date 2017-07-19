@@ -1,0 +1,57 @@
+body {
+  font-family: sans-serif;
+  background-image: url("sugar-glider-companion.jpg");
+}
+header, footer {
+  outline: 1px red solid;
+  width: 100%;
+  display: block;
+}
+
+header {
+  margin-bottom: 10px;
+}
+
+h1 {
+  background-color: #99ccff;
+  margin: 0;
+  padding-bottom: 15px;
+}
+
+header p {
+  background-color: #ccffcc;
+  margin: 0;
+  padding: 16px;
+}
+
+footer {
+  margin-top: 10px;
+  padding: 16px;
+  background-color: #ccffcc;
+}
+
+.column-1, .column-2 {
+  outline: 1px red solid;
+  display: inline-block;
+  width: 45%;
+  vertical-align: top;
+  background-color: #9999e6;
+}
+
+.column-1 {
+  margin-left: 3%;
+  margin-right: 1%;
+}
+
+.column-2 {
+  margin-right: 3%;
+}
+
+code {
+  font-weight: bold;
+}
+
+details {
+  border-bottom: 1px black solid;
+  background-color: #ffd9b3;
+}
