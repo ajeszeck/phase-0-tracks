@@ -51,7 +51,21 @@ while index < candidate_number.to_i
 		insurance_no = true
 	end
 
-	if employee_name == "Drake Cula" || employee_name == "Tu Fang"
+	sunshine_allergy = false
+	allergy = ""
+
+	until allergy == "done"
+		puts "Enter any allergies you have one at a time. Type 'done' when you are finished."
+		allergy = gets.chomp
+		if allergy == "sunshine"
+			sunshine_allergy = true
+			allergy = "done"
+		end
+	end
+
+	if sunshine_allergy == true
+		puts "Probably a vampire"
+	elsif employee_name == "Drake Cula" || employee_name == "Tu Fang"
 		puts "Definitely a vampire."
 	elsif age_false && hate_garlic && insurance_no
 		puts "Almost certainly a vampire."
@@ -65,3 +79,5 @@ while index < candidate_number.to_i
 
 	index += 1
 end
+
+puts "Actually, never mind! What do these questions have to do with anything? Let's all be friends."
