@@ -14,37 +14,30 @@ employee_name = gets.chomp
 
 puts "How old are you?"
 age = gets.chomp.to_i
-puts age
 
 puts "What year were you born?"
 year_of_birth = gets.chomp.to_i
-puts year_of_birth
-
 age_calc = 2017 - year_of_birth
-puts age_calc
 
 if age == age_calc
 	age_true = true
 else 
 	age_false = true
 end
-puts age_true
-puts age_false
 
 puts "Our company cafeteria serves garlic bread. Should we order some for you? (y/n)"
-like_garlic = gets.chomp
-puts like_garlic
-if like_garlic == "y"
+garlic_answer = gets.chomp
+
+if garlic_answer == "y"
 	like_garlic = true
-else
+elsif garlic_answer == "n"
 	hate_garlic = true
+else 
+	puts "error."
 end
-puts like_garlic
-puts hate_garlic
 
 puts "Would you like to enroll in the company’s health insurance? (y/n)"
 insurance = gets.chomp
-puts insurance
 
 if insurance == "y"
 	insurance_yes = true
@@ -52,11 +45,15 @@ else insurance == "n"
 	insurance_no = true
 end
 
-if age_true && (like_garlic || insurance_yes)
-	puts "Probably not a vampire."
-elsif age_false && (hate_garlic || insurance_no)
-	puts "Probably a vampire."
+if employee_name == "Drake Cula" || employee_name == "Tu Fang"
+	puts "Definitely a vampire."
 elsif age_false && hate_garlic && insurance_no
 	puts "Almost certainly a vampire."
+elsif age_false && (hate_garlic || insurance_no)
+	puts "Probably a vampire."
+elsif age_true && (like_garlic || insurance_yes)
+	puts "Probably not a vampire."
+else
+	puts "Results inconclusive."
 end
 
