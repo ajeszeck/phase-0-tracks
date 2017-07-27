@@ -27,7 +27,7 @@ school = {
 		'teacher': 'Charles Xavier',
 		'number_of_students': 30,
 		'student_of_the_week': 'Spring Danniel',
-		'top_three_grade': [91, 81, 70]
+		'top_three_grade': [91, 81, 69]
 	}
 }
 
@@ -38,3 +38,4 @@ school[:biology][:student_of_the_week] = 'Laury Sims'
 puts school[:biology][:student_of_the_week]
 school[:history][:number_of_students] += 2
 puts school[:history][:number_of_students]
+
