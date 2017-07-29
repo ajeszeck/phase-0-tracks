@@ -7,9 +7,7 @@
 
 # Release 0
 
-
 sample_array = [0, 3, 5, 6, 8]
-
 
 def search_array(array, y)
   index = 0
@@ -34,7 +32,6 @@ p search_array(sample_array, 2)
 # Add those two and push the result to the array
 # Increment x any y by 1 
 # Continue incrementing until you reach the argument - 1 times
-
 
 def fib(number_length)
   fib_numbers = [0, 1]
@@ -73,7 +70,6 @@ def swap(array, x, y)
 end
 
 p swap([1, 2, 3], 0, 1)
-
 
 def bubble_sort(array)
   swapped = true
