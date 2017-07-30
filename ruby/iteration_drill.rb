@@ -1,4 +1,4 @@
-# Array Drills
+# Array Drills #########################
 
 zombie_apocalypse_supplies = ["hatchet", "rations", "water jug", "binoculars",
                               "shotgun", "compass", "CB radio", "batteries"]
@@ -61,7 +61,7 @@ end
 
 p combine(zombie_apocalypse_supplies, other_survivor_supplies)
 
-# Hash Drills
+# Hash Drills ###############################
 
 extinct_animals = {
   "Passenger Pigeon" => 1914,
@@ -77,14 +77,30 @@ extinct_animals = {
 # with a dash in between the key and value, and an asterisk between each pair.
 # ----
 
+extinct_animals.each { |key, value| puts "#{key}-#{value} * "}
+
 # 2. Keep only animals in extinct_animals if they were extinct before
 # the year 2000, using #each.
 # ----
+
+extinct_animals.each { |key, value| 
+    if value > 2000
+      extinct_animals.delete(key)
+    end
+  }
+p extinct_animals
 
 # 3. Our calculations were completely off, turns out all of those animals went
 # extinct 3 years before the date provided. Update the values in extinct_animals
 # using #each, so they accurately reflect what year the animal went extinct.
 # ----
+
+
+extinct_animals.each { |key, value| 
+  extinct_animals[key] = value + 3
+}
+
+p extinct_animals
 
 # 4. You've heard that the following animals might be extinct, but you're not sure.
 # Build a method  using #each that checks if an animal is in the hash and returns true/false.
@@ -96,8 +112,41 @@ extinct_animals = {
 # Driver code example: is_extinct?(extinct_animals, "Andean Cat")
 # ----
 
+def is_extinct?(hash_list, animal)
+  extinct = false
+  hash_list.each { |key| 
+    if hash_list.has_key?(animal)
+      extinct = true
+    else
+      extinct = false
+    end
+  }
+  if extinct == true
+    puts "Unfortunately, #{animal} is extinct."
+  else 
+    puts "Good news! #{animal} is not extinct!"
+  end
+end
+
+is_extinct?(extinct_animals, "Andean Cat")
+is_extinct?(extinct_animals, "Dodo")
+is_extinct?(extinct_animals, "Saiga Antelope")
+
+
 # 5. We just found out that the Passenger Pigeon is actually not extinct!
 # Remove them from extinct_animals and return the key value pair as a two item array.
 # Find a Ruby Hash built-in method that helps you accomplish this or build
 # your own method using #each
 # ----
+
+final_list = extinct_animals.select { |key, value|
+  key == "Passenger Pigeon"
+}
+p final_list_array = final_list.to_a
+p final_list_array.flatten
+
+
+
+
+
+
