@@ -73,3 +73,24 @@ groceries = create_list("carrots apples cereal pizza")
 p add_item(groceries, "pineapples")
 p update_item(groceries, "pineapples", 2)
 print_list(groceries)
+
+
+# What did you learn about pseudocode from working on this challenge?
+  # It is really important to be more general in your pseudocode. As a pair, we
+  # really got specific early on in writing pseudocode, we basically began by writing 
+  # code. It is smarter to go general first, and get specific later, it organizes thought
+  # better.
+# What are the tradeoffs of using arrays and hashes for this challenge?
+  # Array would work for the list, but they are less explicit about quantities. You would
+  # would need more methods in order to search for and count items. Hashes worked well 
+  # because it was easy to read the content, easy to display it, and easy to update it.
+# What does a method return?
+  # A piece of data. Could be any data type.
+# What kind of things can you pass into methods as arguments?
+  # Any piece of data. Can be any data type. 
+# How can you pass information between methods?
+  # By using arguments and parameters. 
+# What concepts were solidified in this challenge, and what concepts are still confusing?
+  #  I think that the pseudocode aspect was much more clear after this exercise, but it appears
+  # that I overthink a lot of the directions and try to overcomplicate the questions. I have to
+  # step back and make sure what I am doing is what they are asking for.
