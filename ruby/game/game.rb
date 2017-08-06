@@ -15,36 +15,66 @@
   # Initializes a seperate empty array for storing guess feedback
 
 class Game
-  attr_reader :word
-  attr_accessor :word_guess
+  attr_reader :secret_word 
+  attr_reader :counter
+  attr_accessor :display_guess
 
   def initialize(word)
     puts "Game initialized"
-    @word = word.split("")
-    @word_guess = []
+    @secret_word = word.split("")
+    @display_guess = []
     @word_length = word.length
     index = 0
     while index < word.length
-      word_guess << "_"
+      display_guess << "_"
       index += 1
     end
-    p word_guess
+    p display_guess
   end
 
   def check_guess(letter)
-    @guess_index = word.index(letter)
-    if @guess_index == "nil"
-      puts "Guess again!"
+    @previous_guesses = [] # list of letter guesses
+    @guess_is_present = secret_word.include?(letter)
+    @already_guessed = @previous_guesses.include?(letter)
+    @counter = 0
+    if @already_guessed == false # new guess with new letter
+      @counter += 1
+      @previous_guesses << letter
+      if @guess_is_present # checks letters
+        index = 0
+        puts "Nice guess!"
+        while index < secret_word.count do
+          if secret_word[index] == letter
+            @display_guess[index] = letter
+          end
+          index +=1
+        end
+      else
+        puts "Nope! Guess again."
+      end
     else 
-      word_guess[@guess_index] = letter
+      puts "You already guessed that! Guess again!"
     end
-    puts word_guess
+
+
+    
+    puts counter
+    p @guess_list
+    p display_guess.join
   end
 
 end
 
-game = Game.new("Hooray")
-game.check_guess('o')
+game = Game.new("hooray")
+game.check_guess('h')
+game.check_guess('r')
+
+# secret_word.each do |current_letter|
+#           if current_letter == letter
+#             puts "Nice guess!"
+#             display_guess[@index_of_guess_if_present] = letter
+#           end
+#         end
 # def check_guess
   # Takes user input letter and compares it to guess word's array
   # Input: letter string
