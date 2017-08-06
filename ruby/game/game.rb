@@ -21,7 +21,12 @@ class Game
 
   def initialize(word)
     puts "Game initialized"
-    @secret_word = word.split("")
+    if word.downcase == nil
+      @secret_word = word.split("")
+    else
+      @format_word = word.downcase
+      @secret_word = @format_word.split("")
+    end
     @display_guess = []
     @word_length = word.length
     index = 0
@@ -33,19 +38,25 @@ class Game
   end
 
   def check_guess(letter)
+    if letter.downcase != nil
+      @guess = letter.downcase
+    end
+    p @guess
+    @max_guesses = secret_word.length + 3
     @previous_guesses = [] # list of letter guesses
-    @guess_is_present = secret_word.include?(letter)
-    @already_guessed = @previous_guesses.include?(letter)
+    @guess_is_present = secret_word.include?(@guess)
+    @already_guessed = @previous_guesses.include?(@guess)
     @counter = 0
     if @already_guessed == false # new guess with new letter
       @counter += 1
-      @previous_guesses << letter
+      @previous_guesses << @guess
       if @guess_is_present # checks letters
         index = 0
         puts "Nice guess!"
         while index < secret_word.count do
-          if secret_word[index] == letter
-            @display_guess[index] = letter
+          p secret_word[index]
+          if secret_word[index] == @guess
+            @display_guess[index] = @guess
           end
           index +=1
         end
@@ -55,7 +66,6 @@ class Game
     else 
       puts "You already guessed that! Guess again!"
     end
-
 
     
     puts counter
@@ -69,12 +79,6 @@ game = Game.new("hooray")
 game.check_guess('h')
 game.check_guess('r')
 
-# secret_word.each do |current_letter|
-#           if current_letter == letter
-#             puts "Nice guess!"
-#             display_guess[@index_of_guess_if_present] = letter
-#           end
-#         end
 # def check_guess
   # Takes user input letter and compares it to guess word's array
   # Input: letter string
