@@ -9,7 +9,6 @@ function reverse(string) {
   var reversed_word = "";
   for (var i = string.length - 1; i > -1; i--) {
     reversed_word += string[i];
-    console.log(string[i]);
   }
 
   return reversed_word;
