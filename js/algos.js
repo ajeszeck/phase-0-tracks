@@ -12,5 +12,16 @@
 
 
 function longestWord(array) {
-
+  var longestWord = "";
+  for (var i = 0; i < array.length; i++) {
+    currentWordLength = array[i].length;
+    if (currentWordLength > longestWord.length) {
+      longestWord = array[i];
+    }
+  }
+  return longestWord;
 }
+
+console.log(longestWord(["long phrase","longest phrase","longer phrase"]));
+console.log(longestWord(["cat", "dog", "guinea pig", "monkey"]));
+console.log(longestWord(["alabama", "kentucky", "washington", "rhode island"]));
