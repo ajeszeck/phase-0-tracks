@@ -14,14 +14,55 @@
 function longestWord(array) {
   var longestWord = "";
   for (var i = 0; i < array.length; i++) {
-    currentWordLength = array[i].length;
+    var currentWordLength = array[i].length;
     if (currentWordLength > longestWord.length) {
       longestWord = array[i];
     }
   }
+  console.log(longestWord);
   return longestWord;
 }
 
-console.log(longestWord(["long phrase","longest phrase","longer phrase"]));
-console.log(longestWord(["cat", "dog", "guinea pig", "monkey"]));
-console.log(longestWord(["alabama", "kentucky", "washington", "rhode island"]));
+// ------ PSEUDOCODE FOR OBJECT COMPARISON METHOD ------
+// INPUT: two objects
+// STEPS: 
+//  - use a for loop to iterate through the length of the object
+//  - each time testing to see if the key at i matches
+//  - if it does, test to make sure value's are equal
+//  - if they are, return true, otherwise return false
+// OUTPUT: boolean true/false
+// NOTES:
+//  - You can access object properties in two ways: 
+//    - objectName.propertyName or objectName["propertyName"]
+//    - "key" in obj // true, regardless of the actual value
+//    - !("key" in obj) // true if "key" doesn't exist in object
+//    - !"key" in obj   // ERROR!  Equivalent to "false in obj"
+
+function compare(objOne, objTwo) {
+  var match = false;
+  var count = 0;
+  var keys = Object.keys(objOne);
+  for (var key in objOne) {
+    if (key in objTwo) {
+      var currentValue = objOne[key];
+      if (!match) {
+        if (currentValue == objTwo[key]) {
+          match = true;
+        } else {
+          match = false;
+        }
+      }
+    } else {
+      match = false;
+    }
+  }
+  console.log(match);
+}
+
+compare({name: "Steven", age: 54}, {name: "Tamir", age: 54}); // true
+compare({animal: "Dog", legs: 4}, {animal: "Dog", legs: 3}); // true
+compare({animal: "Cat", legs: 3}, {animal: "Monkey", legs: 4}); // false
+
+longestWord(["long phrase","longest phrase","longer phrase"]); // longest phrase
+longestWord(["cat", "dog", "guinea pig", "monkey"]); // guinea pig
+longestWord(["alabama", "kentucky", "washington", "rhode island"]); // rhode island
