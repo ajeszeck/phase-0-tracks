@@ -78,28 +78,31 @@ function randomStrings(number) {
   var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
   var newArray = [];
   var randomStringLength = Math.floor((Math.random() * 10) + 1);
-  console.log(randomStringLength);
   for (var i = 0; i < number; i++) {
     var newString = "";
     var index = 0
     while (index < randomStringLength) {
-      var randomNumber = Math.floor((Math.random()* 26) + 1);
+      var randomNumber = Math.floor((Math.random()* 25) + 1);
       var randomLetter = alphabet[randomNumber];
       newString = newString + randomLetter;
       index++;
     }
     newArray.push(newString);
     randomStringLength = Math.floor((Math.random() * 10) + 1);
-    console.log(randomStringLength);
   }
   return newArray;
 }
 
-console.log(randomStrings(6));
-// compare({name: "Steven", age: 54}, {name: "Tamir", age: 54}); // true
-// compare({animal: "Dog", legs: 4}, {animal: "Dog", legs: 3}); // true
-// compare({animal: "Cat", legs: 3}, {animal: "Monkey", legs: 4}); // false
+for (var i = 0; i < 10; i++) {
+  var currentNewArray = randomStrings(i);
+  console.log(currentNewArray);
+  longestWord(currentNewArray)
+}
 
-// longestWord(["long phrase","longest phrase","longer phrase"]); // longest phrase
-// longestWord(["cat", "dog", "guinea pig", "monkey"]); // guinea pig
-// longestWord(["alabama", "kentucky", "washington", "rhode island"]); // rhode island
+compare({name: "Steven", age: 54}, {name: "Tamir", age: 54}); // true
+compare({animal: "Dog", legs: 4}, {animal: "Dog", legs: 3}); // true
+compare({animal: "Cat", legs: 3}, {animal: "Monkey", legs: 4}); // false
+
+longestWord(["long phrase","longest phrase","longer phrase"]); // longest phrase
+longestWord(["cat", "dog", "guinea pig", "monkey"]); // guinea pig
+longestWord(["alabama", "kentucky", "washington", "rhode island"]); // rhode island
