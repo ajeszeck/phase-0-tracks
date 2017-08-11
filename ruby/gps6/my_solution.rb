@@ -111,3 +111,34 @@ end
 
 #=======================================================================
 # Reflection Section
+
+# What are the differences between the two different hash syntaxes shown in the state_data file?
+#     - The STATE_DATA hash uses the syntax of => to show key/value pairs. This is the old style of showing key/value pairs. 
+#     The newer way to define key/value pairs in hashes is using the colon (:). Using : defines a key with a symbol notation. 
+# What does require_relative do? How is it different from require?
+#     - Require relative includes a path to a file. Require is used to access gem installed items and 3rd party add-ons.
+# What are some ways to iterate through a hash?
+#     - Loops, one of the most common being an each/do loop. 
+# When refactoring virus_effects, what stood out to you about the variables, if anything?
+#     - What stood out was that you didn't need the variables at all. Since we had declared them as instance methods, 
+#     they could be used in the instance methods without having to feed them in. 
+# What concept did you most solidify in this challenge?
+#     - I think I most solidified how to iterate through hashes and look up keys/values within a hash. 
+#     I didn't know anything about refactoring large if/else statements that contained similar structures. 
+#     I think that will be really handy in the future. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
