@@ -29,4 +29,6 @@
         It|1986|true|horror
 5. Delete an item that meets some condition (you can choose a condition that makes sense).
     INPUT:
+        DELETE FROM books WHERE is_used="false";
     OUTPUT:
+        none.
