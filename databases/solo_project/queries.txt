@@ -1,0 +1,50 @@
+1. Display the information in one table (either table is fine).
+    INPUT: 
+        SELECT * FROM books;
+    OUTPUT: 
+        1|Outlander|1991|false|5
+        2|To Kill a Mockingbird|1960|true|4
+        3|Life After Life|2013|false|3
+        4|It|1986|true|1
+2. Update an item that meets some condition (you can choose a condition that makes sense).
+    INPUT: 
+        UPDATE books SET is_used="true" WHERE title="Life After Life";
+    OUTPUT: 
+        none.
+3. Display the information in both tables using one query.
+    INPUT: 
+        SELECT * FROM books INNER JOIN genres ON books.genre_id = genres.id;
+    OUTPUT:
+        1|Outlander|1991|false|5|5|romance
+        2|To Kill a Mockingbird|1960|true|4|4|drama
+        3|Life After Life|2013|true|3|3|historical fiction
+        4|It|1986|true|1|1|horror
+4. Display a narrower selection of columns (fewer columns than all of them, in other words) from both tables using one query.
+    INPUT:
+        SELECT books.title, books.year, books.is_used, genres.genre FROM books JOIN genres ON books.genre_id = genres.id;
+    OUTPUT:
+        Outlander|1991|false|romance
+        To Kill a Mockingbird|1960|true|drama
+        Life After Life|2013|true|historical fiction
+        It|1986|true|horror
+5. Delete an item that meets some condition (you can choose a condition that makes sense).
+    INPUT:
+        DELETE FROM books WHERE is_used="false";
+    OUTPUT:
+        none.
+
+JOINS:
+1. INNER JOIN - Returns records with matching values in both tables.
+    INPUT: 
+    OUTPUT:
+2. LEFT (OUTER) JOIN - Returns all records from left table, and the matched records from the right table.
+    INPUT: 
+    OUTPUT:
+3. RIGHT (OUTER) JOIN - Returns all records from the right table and the matched records from the left table.
+    INPUT: 
+    OUTPUT:
+4. FULL (OUTER) JOIN - Returns all records when there is a match in either left or right table.
+    INPUT: 
+    OUTPUT:
+
+
