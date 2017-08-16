@@ -32,3 +32,19 @@
         DELETE FROM books WHERE is_used="false";
     OUTPUT:
         none.
+
+JOINS:
+1. INNER JOIN - Returns records with matching values in both tables.
+    INPUT: 
+    OUTPUT:
+2. LEFT (OUTER) JOIN - Returns all records from left table, and the matched records from the right table.
+    INPUT: 
+    OUTPUT:
+3. RIGHT (OUTER) JOIN - Returns all records from the right table and the matched records from the left table.
+    INPUT: 
+    OUTPUT:
+4. FULL (OUTER) JOIN - Returns all records when there is a match in either left or right table.
+    INPUT: 
+    OUTPUT:
+
+
