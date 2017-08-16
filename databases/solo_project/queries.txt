@@ -36,15 +36,25 @@
 JOINS:
 1. INNER JOIN - Returns records with matching values in both tables.
     INPUT: 
+        SELECT books.title, books.is_used, books.year, genres.genre
+        FROM books
+        INNER JOIN genres ON books.genre_id=genres.id;
     OUTPUT:
+        To Kill a Mockingbird|true|1960|drama
+        Life After Life|true|2013|historical fiction
+        It|true|1986|horror
 2. LEFT (OUTER) JOIN - Returns all records from left table, and the matched records from the right table.
     INPUT: 
-    OUTPUT:
-3. RIGHT (OUTER) JOIN - Returns all records from the right table and the matched records from the left table.
-    INPUT: 
-    OUTPUT:
-4. FULL (OUTER) JOIN - Returns all records when there is a match in either left or right table.
-    INPUT: 
-    OUTPUT:
+        SELECT books.title, books.is_used, books.year, genres.genre
+        FROM genres
+        LEFT JOIN books ON genres.id=books.genre_id;
+    OUTPUT: 
+        It|true|1986|horror
+        |||mystery
+        Life After Life|true|2013|historical fiction
+        To Kill a Mockingbird|true|1960|drama
+        |||romance
+        |||history
+3. RIGHT (OUTER) JOIN AND FULL OUTER JOINs are not currently supported.
 
 
