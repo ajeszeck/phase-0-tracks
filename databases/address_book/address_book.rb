@@ -23,29 +23,11 @@ SQL
 
 db.execute(create_table_cmd)
 
-def create_address(address_book, name, address, phone_number)
+def create_address(address_book, name, address, phone_number) # CREATES RANDOM CONTACT USING FAKER
   address_book.execute("INSERT INTO address_book (name, address, phone_number) VALUES (?, ?, ?)", [name, address, phone_number])
   puts name
   puts address
   puts phone_number
-end
-
-def view_contact(address_book, name)
-  result = address_book.execute("SELECT * FROM address_book WHERE name=?", [name.titleize])
-  if result.length == 0 
-    puts "COULD NOT FIND CONTACT INFORMATION FOR '#{name.titleize}'"
-  else 
-    result.each do |contact|
-      puts "#{contact['name'].upcase}:"
-      puts " -- Address: #{contact['address']}"
-      puts " -- Phone Number: #{contact['phone_number']}"
-    end
-  end
-end
-
-def add_contact(address_book, name, address, phone_number)
-  address_book.execute("INSERT INTO address_book (name, address, phone_number) VALUES (?, ?, ?)", [name, address, phone_number])
-  to_exit = true
 end
 
 def look_up_contact(address_book, first_letter)
@@ -68,6 +50,30 @@ def look_up_contact(address_book, first_letter)
   end
 end
 
+def view_contact(address_book, name)
+  result = address_book.execute("SELECT * FROM address_book WHERE name=?", [name.titleize])
+  if result.length == 0 
+    puts "COULD NOT FIND CONTACT INFORMATION FOR '#{name.titleize}'"
+  else 
+    result.each do |contact|
+      puts "#{contact['name'].upcase}:"
+      puts " -- Address: #{contact['address']}"
+      puts " -- Phone Number: #{contact['phone_number']}"
+    end
+  end
+end
+
+def add_contact(address_book, name, address, phone_number)
+  address_book.execute("INSERT INTO address_book (name, address, phone_number) VALUES (?, ?, ?)", [name, address, phone_number])
+  to_exit = true
+end
+
+def update_contact(address_book, name, choice, updated_value)
+  p choice
+  address_book.execute("UPDATE address_book SET #{choice}=? WHERE name=?", [updated_value, name.titleize])
+  view_contact(address_book, name)
+end
+
 def remove_contact(address_book, name)
   result = address_book.execute("DELETE FROM address_book WHERE name='#{name.titleize}'")
   puts "REMAINING CONTACTS"
@@ -85,15 +91,13 @@ def view_all_contacts(address_book)
   end
 end
 
-address = "#{Faker::Address.street_address}, #{Faker::Address.city}, #{Faker::Address.state}, #{Faker::Address.zip_code}"
+# address = "#{Faker::Address.street_address}, #{Faker::Address.city}, #{Faker::Address.state}, #{Faker::Address.zip_code}"
 # create_address(db, Faker::Name.name, address, Faker::Number.number(10))
 
 # 5.times do
 #   address = "#{Faker::Address.street_address}, #{Faker::Address.city}, #{Faker::Address.zip_code}"
 #   create_address(db, Faker::Name.name, address, Faker::Number.number(10))
 # end
-
-# look_up_contact(db, 't')
 
 # book = db.execute("SELECT * FROM address_book")
 # p book.class
@@ -103,6 +107,7 @@ address = "#{Faker::Address.street_address}, #{Faker::Address.city}, #{Faker::Ad
 to_exit = false
 
 until to_exit
+  puts "---------------------------"
   puts "WHAT WOULD YOU LIKE TO DO?"
   puts "1. FIND A CONTACT NAME"
   puts "2. VIEW CONTACT INFO"
@@ -111,6 +116,7 @@ until to_exit
   puts "5. REMOVE A CONTACT"
   puts "6. VIEW ALL CONTACTS"
   puts "7. EXIT"
+  puts "---------------------------"
   answer = gets.chomp
 
   case answer
@@ -133,7 +139,24 @@ until to_exit
     phone_number = gets.chomp
     add_contact(db, name, address, phone_number)
   when "4" # UPDATE A CONTACT
-    
+    puts "CONTACT NAME TO UPDATE?"
+    name = gets.chomp
+    puts "UPDATE WHICH:"
+    puts "  1. ADDRESS"
+    puts "  2. PHONE NUMBER"
+    puts "PLEASE SELECT 1 OR 2."
+    choice = gets.chomp
+    if choice == '1'
+      puts "NEW ADDRESS?"
+      new_address = gets.chomp
+      update_contact(db, name, 'address', new_address)
+    elsif choice == '2' 
+      puts "NEW PHONE NUMBER?"
+      new_number = gets.chomp
+      update_contact(db, name, 'phone_number', new_number)
+    else
+      puts "INVALID SELECTION"
+    end
   when "5" # REMOVE A CONTACT
     puts "NAME TO REMOVE?"
     name = gets.chomp
