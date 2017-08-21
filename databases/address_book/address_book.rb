@@ -31,8 +31,7 @@ def create_address(address_book, name, address, phone_number)
 end
 
 def view_contact(address_book, name)
-  cap_name = name.titleize
-  result = address_book.execute("SELECT * FROM address_book WHERE name=?", [cap_name])
+  result = address_book.execute("SELECT * FROM address_book WHERE name=?", [name.titleize])
   if result.length == 0 
     puts "COULD NOT FIND CONTACT INFORMATION FOR '#{name.titleize}'"
   else 
@@ -70,15 +69,28 @@ def look_up_contact(address_book, first_letter)
 end
 
 def remove_contact(address_book, name)
-  
+  result = address_book.execute("DELETE FROM address_book WHERE name='#{name.titleize}'")
+  puts "REMAINING CONTACTS"
+  view_all_contacts(address_book)
+end
+
+
+def view_all_contacts(address_book)
+  book = address_book.execute("SELECT * FROM address_book")
+  book.each do |contact|
+    puts "NAME: #{contact['name']},"
+    puts "ADDRESS: #{contact['address']}"
+    puts "PHONE #: #{contact['phone_number']}"
+    puts "---------------"
+  end
 end
 
 address = "#{Faker::Address.street_address}, #{Faker::Address.city}, #{Faker::Address.state}, #{Faker::Address.zip_code}"
 # create_address(db, Faker::Name.name, address, Faker::Number.number(10))
 
-# 15.times do
-#   address = "#{Faker::Address.street _address}, #{Faker::Address.city}, #{Faker::Address.zip_code}"
-#   create_address(book, Faker::Name.name, address, Faker::Number.number(10))
+# 5.times do
+#   address = "#{Faker::Address.street_address}, #{Faker::Address.city}, #{Faker::Address.zip_code}"
+#   create_address(db, Faker::Name.name, address, Faker::Number.number(10))
 # end
 
 # look_up_contact(db, 't')
@@ -97,7 +109,8 @@ until to_exit
   puts "3. ADD A CONTACT"
   puts "4. UPDATE A CONTACT"
   puts "5. REMOVE A CONTACT"
-  puts "6. EXIT"
+  puts "6. VIEW ALL CONTACTS"
+  puts "7. EXIT"
   answer = gets.chomp
 
   case answer
@@ -124,43 +137,15 @@ until to_exit
   when "5" # REMOVE A CONTACT
     puts "NAME TO REMOVE?"
     name = gets.chomp
-
-  when "6" # EXIT
+    remove_contact(db, name)
+  when "6" # VIEW ALL CONTACTS
+    view_all_contacts(db)
+  when "7" # EXIT
     to_exit = true
   else 
    puts "INVALID SELECTION"
   end
 end
-# if answer == "yes" || answer == "YES"
-#   puts "ADD A CONTACT or FIND A CONTACT?"
-#   action = gets.chomp
-#   if action == "add a contact" || action == "ADD A CONTACT"
-#     puts "NAME?"
-#     name = gets.chomp
-#     puts "ADDRESS?"
-#     address = gets.chomp
-#     puts "PHONE NUMBER?"
-#     phone_number = gets.chomp
-#     add_contact(db, name, address, phone_number)
-#   elsif action == "find a contact" || action == "FIND A CONTACT"
-#     puts "What is the first letter of the name?"
-#     first_letter = gets.chomp
-#     look_up_contact(db, first_letter.downcase)
-#   else 
-#     puts "Would you like to try again? To exit type 'exit'."
-#     again = gets.chomp
-#     if again == "exit"
-#       to_exit = true
-#     end
-#   end
-# elsif answer == "no" || answer == "NO"
-#   puts "Have a nice day."
-# else 
-#   puts "Invalid answer. Please enter yes or no."
-# end
-
-
-# error in loop, automatically asks to add contact  or find a contact immediately after adding contact
 
 # Good idea to use a number list to ask user what action they would like to achieve, maybe simpler?
 # THI
