@@ -1,6 +1,6 @@
 What are some of the key design philosophies of the Linux operating system?
  - Linux operating systems tend to use either a command line interface,a graphical user interface, or an interface that exists through external hardware. The linux design philosophy tends to revolve around the idea that they designed it for someone who is assumed to know what they are doing. This means that they don't necessarily put safe guards up, so you can do anything you would like to try to do. 
 In your own words, what is a VPS (virtual private server)? What, according to your research, are the advantages of using a VPS?
- - A VPS is 
+ - A VPS is a method of creating a server where you pay for your own virtual instance of an operating system. You can use this virtual instance to create the equivalent of a physical server. The virtual instance runs using memory on the host computer. This option is cheaper than paying for a service to host your own server, and they are definitely cheaper than having your own physical server.
 Optional bonus question: Why is it considered a bad idea to run programs as the root user on a Linux system?
- - 
+ - It is a bad idea to run programs as the root user because it is not as secure, in my head it is similar to branching when using git, you don't want an error to take out your entire system. You also don't want to be exposed to a virus in root that could ruin your system. It is better to run application on a user level and the administrative tasks can be left to the root user level. 
