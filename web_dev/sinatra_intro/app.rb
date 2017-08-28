@@ -12,6 +12,9 @@ get '/' do
   "#{params[:name]} is #{params[:age]} years old."
 end
 
+get '/contact' do
+  "4287 89th Ave S, Portland, OR 82740"
+end
 # write a GET route with
 # route parameters
 get '/about/:person' do
@@ -21,6 +24,11 @@ end
 
 get '/:person_1/loves/:person_2' do
   "#{params[:person_1]} loves #{params[:person_2]}"
+end
+
+get '/great_job/:person_1' do
+  person = params[:person_1]
+  "Good job, #{person}!"
 end
 
 # write a GET route that retrieves
