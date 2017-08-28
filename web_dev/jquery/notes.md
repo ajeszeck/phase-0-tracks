@@ -6,6 +6,7 @@ WHAT TO USE:
     - Create a really basic CSS
     - Use jquery in a JS file to do some cool stuff
     - Create a list of some basic jquery commands
+    - Examples from W3 Schools are great
 
 NOTES DURING STUDY
  - jquery uses css selectors to select elements
