@@ -16,3 +16,45 @@ NOTES DURING STUDY
             $(this).hide();
         });
     });
+
+- Need to use 
+- $( document ).ready(function() {
+  console.log( 'ready!' );
+    }); 
+  to ensure page is in a state that is ready to be manipulated OR:
+- $(function() {
+  console.log( 'ready!' );
+});
+  Which is shorthand.
+
+GET SOME ELEMENTS
+ - simply pass the appropriate CSS selector to $()
+ - any selection you make will only contain elements that existed when you made the selection, any elements you added after will not be available in that new element.
+
+OTHER WAYS TO CREATE A JQUERY OBJECT
+ - from a DOM element: $( document.body.children[0] );
+ - from a list of DOM elements: $( [ window, document ] );
+ - in the context of a DOM element:
+    var firstBodyChild = document.body.children[0];
+    $( 'li', firstBodyChild ); 
+ - within a previous selection: 
+    var paragraph = $( 'p' );
+    $( 'a', paragraph );
+
+CREATING NEW ELEMENTS
+ - $( '<p>' ); --> creates a new <p> element with no content
+ - $( '<p>Hello!</p>' ); --> creates a new <p> element with content
+ - $( '<p class="greet">Hello!</p>' ); --> creates a new <p> with content and class
+ - $( '<p>', {
+  html: 'Hello!',
+  'class': 'greet' <-- Remember to put quotes around class (reserved word in Javascript)
+  });
+
+WORKING WITH SELECTIONS
+ - 
+
+
+
+
+
+
