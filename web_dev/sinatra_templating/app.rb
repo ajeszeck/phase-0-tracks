@@ -13,6 +13,11 @@ get '/' do
   erb :home
 end
 
+get '/campus' do
+  @campus = db.execute("SELECT campus FROM students")
+  erb :campus
+end
+
 get '/students/new' do
   erb :new_student
 end
